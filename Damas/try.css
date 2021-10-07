@@ -1,0 +1,64 @@
+body {
+    background-color: antiquewhite;
+}
+h1 {
+    display: flex;
+    justify-content: center;
+}
+h2 {
+    display: flex;
+    justify-content: center;
+}
+.datos {
+    display: flex;
+    justify-content: center;
+}
+.blanca {
+    position: relative;
+    width: 40px;
+    height: 25px;
+    background-color: rgb(231, 230, 230);
+    border-radius: 65px / 25px;
+  }
+.blanca:before {
+    content: "";
+    position: absolute;
+    background-color: rgb(252, 252, 252);
+    width: 40px;
+    height: 10px;
+    border-radius: 65px / 15px;
+    top: 0px;
+}
+.negra {
+    position: relative;
+    width: 40px;
+    height: 25px;
+    background-color: rgb(80, 80, 80);
+    border-radius: 65px / 25px;
+  }
+.negra:before {
+    content: "";
+    position: absolute;
+    background-color: rgb(134, 134, 134);
+    width: 40px;
+    height: 10px;
+    border-radius: 65px / 15px;
+    top: 0px;
+}
+.player1 {
+
+}
+#logo {
+    width: 300px;
+    height: 150px;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px
+}
+.player2 {
+
+}
+.jugar {
+    display: flex;
+    justify-content: center;
+}
