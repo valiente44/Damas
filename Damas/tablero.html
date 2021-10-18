@@ -23,7 +23,7 @@
                 <div class="datos">
                 <div class="blanca"></div>
                 <div class="player1">
-                    <input name="player1" type="text" placeholder="Nombre del Player1">
+                    <input name="player1" id="player1" type="text" placeholder="Nombre del Player1">
                 </div>
                 <div>
                     <input name="enviaNombre1" type="submit" value="Ready!">
@@ -33,13 +33,13 @@
                 </div>
                 <div class="negra"></div>
                 <div>
-                    <input name="player2" type="text" placeholder="Nombre del Player2">
+                    <input name="player2" id="player2" type="text" placeholder="Nombre del Player2">
                 </div>
                 <div>
                     <input name="enviaNombre2" type="submit" value="Ready!">
                 </div>
                 <div class="jugar">
-                    <input name="empezar" type="submit" value="Empezar">
+                    <input name="empezar" id="submit_names" type="submit" value="Empezar">
                 </div>
                 </div>
             </div>
@@ -48,43 +48,68 @@
     </div>
     <!-- END USERS NAME -->
 
-    <div class="checker white_checker" style="display:none"> </div>
-    <div class="checker black_checker" style="display:none"> </div>
-    <div class="square" style="display: none" id="ht"> </div>
+    <h1 class="title-game title mb-3">Daniel & Diego - Checkers</h1>
 
-    <div class="black_background" id="black_background"> </div>
+    <!-- PRINCIPAL BOARD -->
     <div class="score" id="score">
         <div class="table_game" id="table"></div>
     </div>
-    <br>
+
+    <!-- SHOW INFO ABOUT THE GAME -->
+    <div class="show_info_game mt-3" style="background-color: grey;" id="score">
+        <div class="row">
+            <div class="col-6">
+                <div class="text-center">
+                    <span id="player1_name">Diego</span>
+                    <div class="checker_puntuation">
+                        <div class="checker white_checker text-center">
+                            <span class="puntuation" id="whitePuntuation">12</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-center">
+                    <span id="player2_name">Dani</span>
+                    <div class="checker_puntuation">
+                        <div class="checker black_checker text-center text-white">
+                            <span class="puntuation" id="blackPuntuation">12</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
 <script src="partials/js/scripts.js"></script>
 
+<!-- IMPORTS OF THE DIFFERENT JS'S -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="partials/js/Checker.js"></script>
+<script src="partials/js/Game.js"></script>
+
 <script>
     $(function(){
         $("#usersModal").modal('show');
-        initializeBoard();
+
+        $('#submit_names').on('click', function() {
+            $("#usersModal").modal('hide');
+        });
+
+        $('#usersModal').on('hide.bs.modal', function (e) {
+            var player1 = $('#player1').val();
+            var player2 = $('#player2').val();
+
+            if(player1 && player2) {
+                var game = new Game(player1, player2);
+                game.initializeBoard();
+            } else {
+                e.preventDefault();
+            }
+        })
     });
 
-    function initializeBoard() {
-        var board = '';
-        var swap = true;
-        for(var i = 0; i < 8; i++) {
-            for(var f = 0; f < 8; f++) {
-                if(swap) {
-                    board += '<div class="square black_square"></div>';
-                } else {
-                    board += '<div class="square white_square"></div>';
-                }
-                swap = !swap;
-            }
-            swap = !swap;
-        }
-
-        $('#table').html(board);
-    }
 </script>
 
 </html>

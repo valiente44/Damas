@@ -112,14 +112,33 @@ html {
     margin: 0 auto;
 }
 
+.show_info_game {
+    position: relative;
+    width: 640px;
+    margin: 0 auto;
+}
+
+.checker_puntuation {
+    text-align: -webkit-center;
+}
+
+.puntuation {
+    font-weight: 700;
+}
+
+.title-game {
+    position: relative;
+    width: 40%;
+    margin: 0 auto;
+}
+
 /* FICHAS */
 .checker {
-    top: 10px;
-    left: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
     width: 54px;
     height: 54px;
     border-radius: 50%;
-    position: absolute;
     border: 4px solid white;
     cursor: pointer;
 }
