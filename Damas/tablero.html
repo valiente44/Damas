@@ -17,7 +17,6 @@
     <!-- USERS NAME MODAL + START GAME -->
     <div id="usersModal" class="modal container-fluid" tabindex="-1" role="dialog">
         <div class="modal-dialog mt-5 modal-static" role="document">
-            
             <div class="modal-content mt-5 colorAlert rounded-circle">
                 <h1 class=".lead mt-5 titleFontFamily">DAMAS</h1>
                 <h2 class=".lead text-center mt-5 fontFamily">Coloca los nombres de los jugadores y empieza el juego!</h2>
@@ -30,7 +29,7 @@
                         </div>
                         <!-- <div class="player1"> -->
                         <div class="player1">
-                            <input class="form-control" name="player1" type="text" placeholder="Player1">
+                            <input class="form-control" id="player1" name="player1" type="text" placeholder="Player1">
                         </div>
                         <!-- <div>
                             <input name="enviaNombre1" type="submit" value="Ready!">
@@ -41,13 +40,13 @@
                             <!-- <button id="logo" onclick="myFunction()"><img src="https://www.pngall.com/wp-content/uploads/5/Combat-Versus-PNG-Download-Image.png"></button> -->
                             <h2 class="titleFontFamily ">Aprieta para jugar</h2>
                             <p class=""></p>
-                            <input type="image" class="jugar mb-5"
+                            <input type="image" class="jugar mb-5" id="submit_names"
                                 src="https://www.pngall.com/wp-content/uploads/5/Combat-Versus-PNG-Download-Image.png"
                                 alt="Submit" width="448" height="180" abbr title="Apreta la imagen para jugar">
                         </div >
 
                         <div class="player2">
-                            <input class="form-control" name="player2" type="text" placeholder="Player2">
+                            <input class="form-control" id="player2" name="player2" type="text" placeholder="Player2">
                         </div>
                         <div class="m-5">
                             <div class="negra spinner-border mt-2"></div>
@@ -61,8 +60,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
     <!-- END USERS NAME -->
 
