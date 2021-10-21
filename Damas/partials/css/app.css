@@ -62,6 +62,13 @@ h2 {
     border-radius: 65px / 15px;
     top: 0px;
 }
+.nameBox{
+    font-family: 'Permanent Marker', cursive;
+    font-size: x-large;
+    color: #aa5454;
+    text-shadow: 0 -1px 4px #FFF, 0 -2px 10px rgb(138, 138, 0), 0 -10px 20px #442200, 0 -18px 40px #F00;
+    color: #8b4e4e;
+}
 .player1 {
     min-width: 80px;
 }
@@ -141,6 +148,7 @@ html {
 }
 
 .puntuation {
+    
     font-weight: 700;
 }
 
@@ -152,6 +160,10 @@ html {
 
 /* FICHAS */
 .checker {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
     margin-top: 10px;
     margin-left: 10px;
     width: 54px;
