@@ -1,6 +1,120 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
+/* Letras del CopyRight */
+@import url("https://fonts.googleapis.com/css?family=Permanent+Marker");
+
+.container {
+
+
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20vh;
+}
+
+.container svg {
+    max-width: 45rem;
+    width: 100%;
+    height: auto;
+    fill: none;
+    stroke: rgb(0, 0, 0);
+    stroke-width: 4;
+}
+
+.container svg tspan>tspan {
+    stroke-dasharray: 1500;
+    stroke-dashoffset: -1500;
+}
+
+.container svg tspan>tspan:nth-of-type(1) {
+    -webkit-animation: draw 300ms 150ms forwards;
+    animation: draw 300ms 150ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(2) {
+    -webkit-animation: draw 300ms 300ms forwards;
+    animation: draw 300ms 300ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(3) {
+    -webkit-animation: draw 300ms 450ms forwards;
+    animation: draw 300ms 450ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(4) {
+    -webkit-animation: draw 300ms 600ms forwards;
+    animation: draw 300ms 600ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(5) {
+    -webkit-animation: draw 300ms 750ms forwards;
+    animation: draw 300ms 750ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(6) {
+    -webkit-animation: draw 300ms 900ms forwards;
+    animation: draw 300ms 900ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(7) {
+    -webkit-animation: draw 300ms 1050ms forwards;
+    animation: draw 300ms 1050ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(8) {
+    -webkit-animation: draw 300ms 1200ms forwards;
+    animation: draw 300ms 1200ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(9) {
+    -webkit-animation: draw 300ms 1350ms forwards;
+    animation: draw 300ms 1350ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(10) {
+    -webkit-animation: draw 300ms 1500ms forwards;
+    animation: draw 300ms 1500ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(11) {
+    -webkit-animation: draw 300ms 1650ms forwards;
+    animation: draw 300ms 1650ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(12) {
+    -webkit-animation: draw 300ms 1800ms forwards;
+    animation: draw 300ms 1800ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(13) {
+    -webkit-animation: draw 300ms 1950ms forwards;
+    animation: draw 300ms 1950ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(14) {
+    -webkit-animation: draw 300ms 2100ms forwards;
+    animation: draw 300ms 2100ms forwards;
+}
+
+.container svg tspan>tspan:nth-of-type(15) {
+    -webkit-animation: draw 300ms 2250ms forwards;
+    animation: draw 300ms 2250ms forwards;
+}
+
+@-webkit-keyframes draw {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes draw {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+/* Fin Letras del CopyRight */
 
 /* MODAL PICKUP USERS */
 body {
@@ -75,15 +189,17 @@ h2 {
 }
 
 .nameBox {
+    border-radius: 50px;
+    max-width: 640px;
     transition: all .5s ease-in-out;
-    -webkit-transform:scale(1.2);
-    transform:scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
     font-family: 'Permanent Marker', cursive;
-    /* font-size: large; */
     background-color: #94c7c3;
-    background-image: repeating-linear-gradient(25deg, transparent, transparent 25px, rgba(255, 255, 255, .5) 25px, rgba(255, 255, 255, .5) 50px);
+
+    background-image: repeating-linear-gradient(50deg, transparent, transparent 25px, rgba(255, 255, 255, 0.5) 25px, rgba(255, 255, 255, .5) 50px);
     animation: color 50s linear infinite;
-    border: 8px solid white;
+    border: 6px solid white;
 }
 
 .player1 {
@@ -107,28 +223,30 @@ h2 {
     margin-left: 1rem;
     margin-top: -30px;
 }
-.img:hover{
+
+.img:hover {
     transition: all .5s ease-in-out;
-    border-radius:50%;
-    -webkit-border-radius:50%;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
     box-shadow: 0px 0px 15px 15px #ec731e;
     -webkit-box-shadow: 0px 0px 15px 15px #ec731e;
-    -webkit-transform:scale(1.3);
-    transform:scale(1.3);
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
 }
+
 .jugar {
     display: flex;
     justify-content: center;
 }
 
 .modal-dialog {
-    transition: all 1.5s ease-in-out;
-    border-radius:50%;
-    -webkit-border-radius:50%;
+    transition: all 3.5s ease-in-out;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
     box-shadow: 0px 0px 15px 15px #009baf9d;
     -webkit-box-shadow: 0px 0px 15px 15px #009baf81;
-    -webkit-transform:scale(1.2);
-    transform:scale(-1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
     max-width: 1300px;
     margin: 1.75rem auto;
 }
@@ -145,16 +263,17 @@ html {
 }
 
 /* TABLERO */
-.turnos{
+.turnos {
     transition: all .5s ease-in-out;
-    -webkit-transform:scale(1.2);
-    transform:scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
     font-family: 'Permanent Marker', cursive;
     font-size: large;
     animation: color 50s linear infinite;
     border: 2px solid white;
     text-align: center;
 }
+
 .square {
     float: left;
     width: 80px;
@@ -186,7 +305,9 @@ html {
     align-items: center;
     align-content: center;
     position: relative;
+    max-width: 640px;
     width: 640px;
+    height: 180px;
     margin: 0 auto;
 }
 
@@ -200,7 +321,14 @@ html {
 }
 
 .title-game {
+    background-color: #ad6924;
+    animation: color 50s linear infinite;
+    background-image: repeating-linear-gradient(10deg, transparent, transparent 20px, rgba(255, 255, 255, 0.5) 25px, rgba(255, 255, 255, 0.5) 50px);
+    border-radius: 50px;
+    box-shadow: 0px 0px 5px 5px #1eabec;
+    -webkit-box-shadow: 0px 0px rgb(30, 195, 236) #1edeec;
     transition: all 1.5s ease-in-out;
+
     position: relative;
     width: 40%;
     margin: 0 auto;
@@ -221,13 +349,28 @@ html {
     cursor: pointer;
 }
 
+.checkerTurn {
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 4px solid white;
+    /* cursor: pointer; */
+}
+
 .white_checker {
-    
     background: #94c7c3;
     -webkit-transition: 0.3s ease-in-out;
     -moz-transition: 0.3s ease-in-out;
     -o-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out;
+    filter: opacity(0.3);
 }
 
 .black_checker {
@@ -236,8 +379,17 @@ html {
     -moz-transition: 0.3s ease-in-out;
     -o-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out;
+    filter: opacity(0.3);
 }
 
 .available_position {
     background: rgb(112, 73, 35);
+}
+
+.activeTurn {
+    box-shadow: 0px 0px 5px 5px #ec731e;
+    -webkit-box-shadow: 0px 0px 5px 5px #ec731e;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    filter: opacity(1);
 }

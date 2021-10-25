@@ -18,26 +18,80 @@
     <div id="usersModal" class="modal container-fluid" tabindex="-1" role="dialog">
         <div class="modal-dialog mt-5 modal-static" role="document">
             <div class="modal-content mt-5 colorAlert rounded-circle">
+
                 <h1 class=".lead mt-5 titleFontFamily">DAMAS</h1>
-                <h2 class=".lead text-center mt-5 fontFamily">Coloca los nombres de los jugadores y empieza el juego!</h2>
+
+                <div class="container">
+
+                    <svg class=" mt-5 mb-5" viewBox="0 0 1418 116" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g stroke="none" fill="none" fill-rule="evenodd" fill-opacity="0">
+                            <text id="@WebDesignerMag" stroke="#fff" fill="#645F5A" font-weight="normal"
+                                font-family="PermanentMarker-Regular, Permanent Marker" font-size="144">
+                                <tspan x="3" y="109">
+
+                                    <!--
+                                        -->
+                                    <tspan>D</tspan>
+                                    <!--
+                                        -->
+                                    <tspan>I</tspan>
+                                    <!--
+                                        -->
+                                    <tspan>E</tspan>
+                                    <!--
+                                        -->
+                                    <tspan>G</tspan>
+                                    <!--
+                                        -->
+                                    <tspan>O</tspan>
+                                    <!--
+                                        -->
+                                    <tspan></tspan>
+                                    <!--
+                                        -->
+                                    <tspan>D</tspan>
+                                    <!--
+                                        -->
+                                    <tspan>A</tspan>
+                                    <!--
+                                        -->
+                                    <tspan>N</tspan>
+                                    <!--
+                                        -->
+                                    <tspan>I</tspan>
+                                    <!--
+                                        -->
+
+                                    <tspan>©</tspan>
+                                </tspan>
+                            </text>
+                        </g>
+                    </svg>
+
+                </div>
+                <h2 class=".lead text-center mt-5 fontFamily">Coloca los nombres de los jugadores y empieza el juego!
+                </h2>
                 <div class="mt-5">
                     <div class="datos align-content-center mt-5">
                         <div class="m-5">
                             <div class="blanca spinner-border mt-2"></div>
                         </div>
                         <div class="player1">
-                            <input class="form-control" id="player1" name="player1" type="text" placeholder="Player1">
+                            <input class="form-control" id="player1" name="player1" type="text" placeholder="Player1"
+                                maxlength="10">
                         </div>
                         <div class="logo_vs mt-5">
-                            <h2 class="titleFontFamily ">Aprieta para jugar</h2>
-                            <p class=""></p>
+                            <h2 class="titleFontFamily ">Click en la imagen para jugar</h2>
                             <input type="image" class="jugar mb-5 mt-5 img" id="submit_names"
                                 src="https://www.pngall.com/wp-content/uploads/5/Combat-Versus-PNG-Download-Image.png"
                                 alt="Submit" width="448" height="180" abbr title="Apreta la imagen para jugar">
-                        </div >
+
+                        </div>
 
                         <div class="player2">
-                            <input class="form-control" id="player2" name="player2" type="text" placeholder="Player2">
+                            <input class="form-control" id="player2" name="player2" type="text" placeholder="Player2"
+                                maxlength="10">
                         </div>
                         <div class="m-5">
                             <div class="negra spinner-border mt-2"></div>
@@ -48,43 +102,39 @@
         </div>
     </div>
     <!-- END USERS NAME -->
-
-    <h1 class="title-game title mb-3 titleFontFamily mt-2 mb-2">Daniel & Diego - Checkers</h1>
-
+    <div class="mt-5"></div>
     <!-- PRINCIPAL BOARD -->
     <div class="score" id="score">
         <div class="table_game" id="table"></div>
     </div>
  
     <!-- SHOW INFO ABOUT THE GAME -->
-    <div class="show_info_game mt-3"id="score">
+    <div class="show_info_game mt-3" id="score">
         <div class="row nameBox">
             <div class="col-6">
-                <div class="text-center">
+                <div class="text-center mt-3">
                     <span id="player1_name"></span>
                     <div class="checker_puntuation">
-                        <div class="checker white_checker text-center">
+                        <div id="whiteTurn" class="checkerTurn white_checker activeTurn text-center mb-5 m-lg-4">
                             <span class="puntuation" id="whitePuntuation"></span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-6">
-                <div class="text-center">
+                <div class="text-center mt-3">
                     <span id="player2_name"></span>
                     <div class="checker_puntuation">
-                        <div class="checker black_checker text-center text-white">
+                        <div id="blackTurn" class="checkerTurn black_checker text-center text-white m-lg-4">
                             <span class="puntuation" id="blackPuntuation"></span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                
-            </div>
+
         </div>
     </div>
-    
+
 </body>
 
 <script src="partials/js/scripts.js"></script>
@@ -99,7 +149,7 @@
     $(function () {
         $("#usersModal").modal('show');
 
-        $('#submit_names').on('click', function() {
+        $('#submit_names').on('click', function () {
             $("#usersModal").modal('hide');
         });
 
@@ -107,7 +157,7 @@
             var player1 = $('#player1').val();
             var player2 = $('#player2').val();
 
-            if(player1 && player2) {
+            if (player1 && player2) {
                 var game = new Game(player1, player2);
                 game.initializeBoard();
             } else {
@@ -115,7 +165,6 @@
             }
         })
     });
-
 </script>
 
 </html>
