@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* Letras del CopyRight */
 @import url("https://fonts.googleapis.com/css?family=Permanent+Marker");
 
 .container {
@@ -112,6 +114,7 @@
         stroke-dashoffset: 0;
     }
 }
+/* Fin Letras del CopyRight */
 
 /* MODAL PICKUP USERS */
 body {
