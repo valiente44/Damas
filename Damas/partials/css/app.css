@@ -195,7 +195,7 @@ h2 {
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
     font-family: 'Permanent Marker', cursive;
-    background-color: #94c7c3;
+    background-color: #dac2dd;
 
     background-image: repeating-linear-gradient(50deg, transparent, transparent 25px, rgba(255, 255, 255, 0.5) 25px, rgba(255, 255, 255, .5) 50px);
     animation: color 50s linear infinite;
@@ -263,17 +263,6 @@ html {
 }
 
 /* TABLERO */
-.turnos {
-    transition: all .5s ease-in-out;
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-    font-family: 'Permanent Marker', cursive;
-    font-size: large;
-    animation: color 50s linear infinite;
-    border: 2px solid white;
-    text-align: center;
-}
-
 .square {
     float: left;
     width: 80px;
@@ -328,7 +317,6 @@ html {
     box-shadow: 0px 0px 5px 5px #1eabec;
     -webkit-box-shadow: 0px 0px rgb(30, 195, 236) #1edeec;
     transition: all 1.5s ease-in-out;
-
     position: relative;
     width: 40%;
     margin: 0 auto;
