@@ -25,6 +25,16 @@ class Game  {
         return this.turn;
     }
 
+    changeTurn() {
+        this.turn = !this.turn;
+        $('.activeTurn').removeClass('activeTurn');
+        if(this.turn) {
+            $('#whiteTurn').addClass('activeTurn');
+        } else {
+            $('#blackTurn').addClass('activeTurn');
+        }
+    }
+
     removeAvailablePositions() {
         //Remove all the available positions
         $('.available_position').off('click');
@@ -40,15 +50,16 @@ class Game  {
         var Y = '';
 
         if(isWhite) {
-            X = positions[0] - 1;
-            Y = [positions[1] - 1, parseInt(positions[1]) + 1];
+            X = parseInt(positions[0]) - 1;
+            Y = [parseInt(positions[1]) - 1, parseInt(positions[1]) + 1];
         } else {
-            X = positions[0] + 1;
-            Y = [positions[1] + 1, parseInt(positions[1]) - 1];
+            X = parseInt(positions[0]) + 1;
+            Y = [parseInt(positions[1]) + 1, parseInt(positions[1]) - 1];
         }
 
         for(var i = 0; i < 2; i++) {
             if(!checkerArray.some(el => el.position == X + '-' + Y[i])) {
+            console.log(X + '-' + Y[i]);
                 $('#' + X + '-' + Y[i]).addClass('available_position');
                 this.allowMovement(X, Y[i], position, checkerArray);
             }
@@ -71,5 +82,7 @@ class Game  {
 
         $('#' + origin).html(''); 
         $('#' + destiny).html('<div class="checker white_checker"></div>'); 
+
+        this.changeTurn();
     }
 }
