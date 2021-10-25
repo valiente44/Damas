@@ -5,8 +5,7 @@ class Game  {
         this.start = true;
         this.whitePuntuation = 12;
         this.blackPuntuation = 12;
-        this.white_cheekers = [];
-        this.black_cheekers = [];
+        this.board = new Board(this);
         //If turn == true, white
         //If turn == false, black
         this.turn = true;
@@ -19,58 +18,58 @@ class Game  {
     }
      
     initializeBoard() {
-        var board = '';
-        var swap = true;
-        for(var fil = 0; fil < 8; fil++) {
-            for(var col = 0; col < 8; col++) {
-                if(swap) {
-                    board += '<div class="square white_square" id="' + fil + '-' + col + '"></div>';
-                } else {
-                    if(fil >= 0 && fil < 3) {
-                        board += '<div class="square black_square" id="' + fil + '-' + col + '"><div class="checker black_checker"></div></div>';
-                    } else if(fil >= 5 && fil < 9) {
-                        board += '<div class="square black_square" id="' + fil + '-' + col + '"><div class="checker white_checker"></div></div>';
-                    } else {
-                        board += '<div class="square black_square" id="' + fil + '-' + col + '"></div>';
-                    }
-                }
-                swap = !swap;
-            }
-            swap = !swap;
+        this.board.initializeBoard();
+    }
+
+    getTurn() {
+        return this.turn;
+    }
+
+    removeAvailablePositions() {
+        //Remove all the available positions
+        $('.available_position').off('click');
+        $('.available_position').removeClass('available_position');
+    }
+
+    highlightAvailablePositions(isWhite, position, checkerArray) {
+        this.removeAvailablePositions();
+
+        //Calculate origin position
+        var positions = position.split('-');
+        var X = '';
+        var Y = '';
+
+        if(isWhite) {
+            X = positions[0] - 1;
+            Y = [positions[1] - 1, parseInt(positions[1]) + 1];
+        } else {
+            X = positions[0] + 1;
+            Y = [positions[1] + 1, parseInt(positions[1]) - 1];
         }
-    
-        $('#table').html(board);
 
-        var arrayWhiteCheckers = this.white_cheekers;
-        var arrayBlackCheckers = this.black_cheekers;
+        for(var i = 0; i < 2; i++) {
+            if(!checkerArray.some(el => el.position == X + '-' + Y[i])) {
+                $('#' + X + '-' + Y[i]).addClass('available_position');
+                this.allowMovement(X, Y[i], position, checkerArray);
+            }
+        }
+    }
 
-        var id = 1;
+    allowMovement(X, Y, position, checkerArray) {
         var outside = this;
 
-        $(".white_checker").each(function(e) {
-            var checker = new Checker((id + '-w'), '#FFFFFF', $(this).parent().attr('id'));
-            arrayWhiteCheckers.push(checker);
-            id++;
-
-            $(this).on('click', function(e) {
-                outside.showAvailablePositions(true, checker.position);
-            });
-        });
-
-        $(".black_checker").each(function(e) {
-            var checker = new Checker((id + '-b'), '#000000', $(this).parent().attr('id'));
-            arrayBlackCheckers.push(checker);
-            id++;
-
-            $(this).on('click', function(e) {
-                outside.showAvailablePositions(false, checker.position);
-            });
+        $('#' + X + '-' + Y).click(function() {
+            outside.makeMovement(position, X + '-' + Y, checkerArray);
         });
     }
 
-    showAvailablePositions(isWhite, position) {
-        if(this.turn == isWhite) {
-            alert('Is white? ' + isWhite + ', Position: ' + position);
-        }
+    makeMovement(origin, destiny, checkerArray) {
+        this.removeAvailablePositions();
+        
+        var index = checkerArray.findIndex(el => el.position == origin);
+        checkerArray[index].position = destiny;
+
+        $('#' + origin).html(''); 
+        $('#' + destiny).html('<div class="checker white_checker"></div>'); 
     }
 }
