@@ -367,6 +367,21 @@ html {
     -o-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out;
 }
+.white_checkerQueen {
+    background: #94c7c3;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+}
+
+.black_checkerQueen {
+    background: #515155;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+}
 
 .available_position {
     background: rgb(112, 73, 35);
