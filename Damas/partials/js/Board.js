@@ -15,9 +15,9 @@ class Board {
                     board += '<div class="square white_square" id="' + fil + '-' + col + '"></div>';
                 } else {
                     if(fil >= 0 && fil < 3) {
-                        board += '<div class="square black_square" id="' + fil + '-' + col + '"><div class="checker black_checker"></div></div>';
+                        board += '<div class="square black_square" id="' + fil + '-' + col + '"><div class="checker black_checker"></div></div>'; // fas fa-crown text-white d-flex align-items-center
                     } else if(fil >= 5 && fil < 9) {
-                        board += '<div class="square black_square" id="' + fil + '-' + col + '"><div class="checker white_checker"></div></div>';
+                        board += '<div class="square black_square" id="' + fil + '-' + col + '"><div class="checker white_checker"></div></div>'; //fas fa-crown d-flex align-items-center
                     } else {
                         board += '<div class="square black_square" id="' + fil + '-' + col + '"></div>';
                     }

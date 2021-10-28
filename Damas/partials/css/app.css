@@ -6,15 +6,15 @@
 
 .container {
 
-
     background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 20vh;
+    min-height: 15vh;
 }
 
 .container svg {
+
     max-width: 45rem;
     width: 100%;
     height: auto;
@@ -132,7 +132,8 @@ h2 {
 }
 
 .colorAlert {
-    background-color: #009baf;
+    
+    background-color: #119200;
 }
 
 .titleFontFamily {
@@ -238,13 +239,19 @@ h2 {
     display: flex;
     justify-content: center;
 }
-
+.modal-content{
+    background-color: #1edeec;
+    /* background-image: url(https://www.affde.com/uploads/article/7591/kqEWq6Jz8dp2Lb03.gif); */
+    /* background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; */
+}
 .modal-dialog {
     transition: all 3.5s ease-in-out;
     border-radius: 50%;
     -webkit-border-radius: 50%;
-    box-shadow: 0px 0px 15px 15px #009baf9d;
-    -webkit-box-shadow: 0px 0px 15px 15px #009baf81;
+    /* box-shadow: 0px 0px 15px 15px #7e82839d;
+    -webkit-box-shadow: 0px 0px 15px 15px #28aa1c81; */
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
     max-width: 1300px;
@@ -361,21 +368,6 @@ html {
 }
 
 .black_checker {
-    background: #515155;
-    -webkit-transition: 0.3s ease-in-out;
-    -moz-transition: 0.3s ease-in-out;
-    -o-transition: 0.3s ease-in-out;
-    transition: 0.3s ease-in-out;
-}
-.white_checkerQueen {
-    background: #94c7c3;
-    -webkit-transition: 0.3s ease-in-out;
-    -moz-transition: 0.3s ease-in-out;
-    -o-transition: 0.3s ease-in-out;
-    transition: 0.3s ease-in-out;
-}
-
-.black_checkerQueen {
     background: #515155;
     -webkit-transition: 0.3s ease-in-out;
     -moz-transition: 0.3s ease-in-out;
