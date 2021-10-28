@@ -60,35 +60,33 @@ class Game  {
 
             this.initializeView();
         }
+
+        isStarted() {
+            return this.start;
+        }
+
+        endGame(winner) {
+            this.removeAvailablePositions();
+            this.start = false;
+            var winner_string = '';
+            if(winner) {
+                winner_string = 'The white checkers won!!';
+            } else {
+                winner_string = 'The black checkers won!!';
+            }
+
+            Swal.fire(
+                'A winner has been decided!',
+                winner_string,
+                'success'
+            );
+        }
     // <!-- End Utility functions Game -->
 
-    highlightAvailablePositions(checker, checkerArray) {
+    highlightAvailablePositions(checker) {
         this.removeAvailablePositions();
         
-        //Calculate origin position
-        var positions = checker.position.split('-');
-        var X = '';
-        var Y = '';
-
-        if(checker.color) {
-            X = parseInt(positions[0]) - 1;
-            Y = [parseInt(positions[1]) - 1, parseInt(positions[1]) + 1];
-        } else {
-            X = parseInt(positions[0]) + 1;
-            Y = [parseInt(positions[1]) + 1, parseInt(positions[1]) - 1];
-        }
-
-        for(var i = 0; i < 2; i++) {
-            var filled = this.checkFilledRow(X + '-' + Y[i]);
-
-            if(!filled) {
-                this.initializeMovement(X, Y[i], checker);
-            } else {
-                if(filled.color != checker.color) {
-                    this.checkIfCanKill(checker, filled);
-                }
-            }
-        }
+        this.loadMovements(checker);
     }
 
     initializeMovement(X, Y, checker, killedChecker = null) {
@@ -132,15 +130,17 @@ class Game  {
 
     makeMovement(checker, destiny, killedChecker) {
         this.removeAvailablePositions();
+        var oldPosition = checker.position;
+
+        checker.setPosition(destiny);
 
         if(killedChecker) {
             this.killEnemyChecker(killedChecker);
+            this.loadMovements(checker, true);
         }
         
-        $('#' + checker.position).html(''); 
+        $('#' + oldPosition).html(''); 
 
-        checker.setPosition(destiny);
-        
         if(checker.color) {
             var color = 'white';
         } else {
@@ -149,7 +149,9 @@ class Game  {
 
         $('#' + destiny).html('<div class="checker ' + color + '_checker"></div>');
 
-        this.changeTurn();
+        if($('.available_position').length == 0) {
+            this.changeTurn();
+        }
     }
 
     killEnemyChecker(killedChecker) {
@@ -157,5 +159,38 @@ class Game  {
         killedChecker.kill(); 
         
         this.adjustPuntuation();
+
+        if(this.blackPuntuation <= 0) {
+            this.endGame(true);
+        } else if(this.whitePuntuation <= 0){
+            this.endGame(false);
+        }
+    }
+
+    loadMovements(checker, keepKilling = false) {
+        //Calculate origin position
+        var positions = checker.position.split('-');
+        var X = '';
+        var Y = '';
+
+        if(checker.color) {
+            X = parseInt(positions[0]) - 1;
+            Y = [parseInt(positions[1]) - 1, parseInt(positions[1]) + 1];
+        } else {
+            X = parseInt(positions[0]) + 1;
+            Y = [parseInt(positions[1]) + 1, parseInt(positions[1]) - 1];
+        }
+
+        for(var i = 0; i < 2; i++) {
+            var filled = this.checkFilledRow(X + '-' + Y[i]);
+
+            if(!filled && !keepKilling) {
+                this.initializeMovement(X, Y[i], checker);
+            } else {
+                if(filled && filled.color != checker.color) {
+                    this.checkIfCanKill(checker, filled);
+                }
+            }
+        }
     }
 }

@@ -34,9 +34,9 @@ class Board {
 
     showAvailablePositions(isWhite, checker) {
         //Check if the clicked cheeker match the current turn
-        if(this.game.checkTurn() == isWhite) {
+        if(this.game.checkTurn() == isWhite && this.game.isStarted()) {
             //Call the game method to highlight all available positions
-            this.game.highlightAvailablePositions(checker, this.all_cheekers);
+            this.game.highlightAvailablePositions(checker);
         }
     }
 
