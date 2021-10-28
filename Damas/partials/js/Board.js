@@ -2,6 +2,7 @@ class Board {
     constructor(game) {
         this.white_cheekers = [];
         this.black_cheekers = [];
+        this.all_cheekers = [];
         this.game = game;
     }
 
@@ -31,25 +32,16 @@ class Board {
         this.initializeCheckers();
     }
 
-    showAvailablePositions(isWhite, position) {
+    showAvailablePositions(isWhite, checker) {
         //Check if the clicked cheeker match the current turn
-        if(this.checkTurn() == isWhite) {
-            var checkerArray = [];
-
-            //Load the correct checker array so the game can check if the position is being used
-            if(isWhite) {
-                checkerArray = this.white_cheekers;
-            } else {
-                checkerArray = this.black_cheekers;
-            }
-
+        if(this.game.checkTurn() == isWhite) {
             //Call the game method to highlight all available positions
-            this.game.highlightAvailablePositions(isWhite, position, checkerArray);
+            this.game.highlightAvailablePositions(checker, this.all_cheekers);
         }
     }
 
-    checkTurn() {
-        return this.game.getTurn();
+    rowFilled(position) {
+        return this.all_cheekers.find(el => el.position == position)
     }
 
     initializeCheckers() {
@@ -61,7 +53,7 @@ class Board {
 
         //Initialize white checkers
         $("#table .white_checker").each(function(e) {
-            var checker = new Checker((id + '-w'), '#FFFFFF', $(this).parent().attr('id'));
+            var checker = new Checker((id + '-w'), true, $(this).parent().attr('id'));
             arrayWhiteCheckers.push(checker);
             id++;
         });
@@ -70,12 +62,12 @@ class Board {
 
         $(document).on('click', '.white_checker', function() {
             var checker = outside.white_cheekers.find(el => el.position == $(this).parent().attr('id'));
-            outside.showAvailablePositions(true, checker.position);
+            outside.showAvailablePositions(true, checker);
         });
 
         //Initialize black checkers
         $("#table .black_checker").each(function(e) {
-            var checker = new Checker((id + '-b'), '#000000', $(this).parent().attr('id'));
+            var checker = new Checker((id + '-b'), false, $(this).parent().attr('id'));
             arrayBlackCheckers.push(checker);
             id++;
         });
@@ -84,8 +76,9 @@ class Board {
 
         $(document).on('click', '.black_checker', function() {
             var checker = outside.black_cheekers.find(el => el.position == $(this).parent().attr('id'));
-            outside.showAvailablePositions(false, checker.position);
+            outside.showAvailablePositions(false, checker);
         });
 
+        this.all_cheekers = this.white_cheekers.concat(this.black_cheekers);
     }
 }
