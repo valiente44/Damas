@@ -148,11 +148,23 @@ class Game  {
 
         if(checker.color) {
             var color = 'white';
+            var extra_classes = 'fas fa-crown d-flex align-items-center';
         } else {
             var color = 'black';
+            var extra_classes = 'fas fa-crown text-white d-flex align-items-center';
         }
 
-        $('#' + destiny).html('<div class="checker ' + color + '_checker"></div>');
+        var final_position = checker.position.split('-');
+
+        if(final_position[0] == 0 || final_position[0] == 7) {
+            checker.transform();
+        }
+
+        if(checker.isQueen()) {
+            $('#' + destiny).html('<div class="checker ' + color + '_checker ' + extra_classes + '"></div>');
+        } else {
+            $('#' + destiny).html('<div class="checker ' + color + '_checker"></div>');
+        }
 
         if($('.available_position').length == 0) {
             this.changeTurn();

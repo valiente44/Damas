@@ -5,8 +5,6 @@ class Checker {
         this.queen = false;
         this.status = 0;
         this.position = square;
-        this.x = this.position.split('-')[0];
-        this.y = this.position.split('-')[1];
     }
 
     setPosition(position) {
@@ -18,4 +16,11 @@ class Checker {
         this.position = null;
     }
 
+    transform() {
+        this.queen = true;
+    }
+
+    isQueen() {
+        return this.queen;
+    }
 } 
