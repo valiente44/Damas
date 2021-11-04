@@ -137,6 +137,7 @@ h2 {
 }
 
 .titleFontFamily {
+    
     font-family: 'Permanent Marker', cursive;
 
 }
@@ -155,14 +156,14 @@ h2 {
     position: relative;
     width: 60px;
     height: 45px;
-    background-color: rgb(231, 230, 230);
+    background-color: #4cc4ba;
     border-radius: 65px / 25px;
 }
 
 .blanca:before {
     content: "";
     position: absolute;
-    background-color: rgb(252, 252, 252);
+    background-color: #7bcac4;
     width: 60px;
     height: 20px;
     border-radius: 65px / 15px;
