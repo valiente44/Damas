@@ -6,6 +6,7 @@ class Game  {
         this.whitePuntuation = 12;
         this.blackPuntuation = 12;
         this.board = new Board(this);
+        this.isMultiKilling = false;
         //If turn == true, white
         //If turn == false, black
         this.turn = true;
@@ -38,9 +39,11 @@ class Game  {
         }
 
         removeAvailablePositions() {
-            //Remove all the available positions
-            $('.available_position').off('click');
-            $('.available_position').removeClass('available_position');
+            //Remove all the available positions if the selected checker isn't multikilling
+            if(!this.isMultiKilling) {
+                $('.available_position').off('click');
+                $('.available_position').removeClass('available_position');
+            }
         }
 
         checkTurn() {
@@ -85,7 +88,7 @@ class Game  {
 
     highlightAvailablePositions(checker) {
         this.removeAvailablePositions();
-        
+    
         this.loadMovements(checker);
     }
 
@@ -130,15 +133,17 @@ class Game  {
 
     makeMovement(checker, destiny, killedChecker) {
         this.removeAvailablePositions();
+
         var oldPosition = checker.position;
 
         checker.setPosition(destiny);
 
         if(killedChecker) {
             this.killEnemyChecker(killedChecker);
+            this.removeAvailablePositions();
             this.loadMovements(checker, true);
         }
-        
+
         $('#' + oldPosition).html(''); 
 
         if(checker.color) {
@@ -151,6 +156,9 @@ class Game  {
 
         if($('.available_position').length == 0) {
             this.changeTurn();
+            this.isMultiKilling = false;
+        } else {
+            this.isMultiKilling = true;
         }
     }
 
@@ -159,6 +167,8 @@ class Game  {
         killedChecker.kill(); 
         
         this.adjustPuntuation();
+
+        this.isMultiKilling = false;
 
         if(this.blackPuntuation <= 0) {
             this.endGame(true);
@@ -169,26 +179,28 @@ class Game  {
 
     loadMovements(checker, keepKilling = false) {
         //Calculate origin position
-        var positions = checker.position.split('-');
-        var X = '';
-        var Y = '';
+        if(!this.isMultiKilling) {
+            var positions = checker.position.split('-');
+            var X = '';
+            var Y = '';
 
-        if(checker.color) {
-            X = parseInt(positions[0]) - 1;
-            Y = [parseInt(positions[1]) - 1, parseInt(positions[1]) + 1];
-        } else {
-            X = parseInt(positions[0]) + 1;
-            Y = [parseInt(positions[1]) + 1, parseInt(positions[1]) - 1];
-        }
-
-        for(var i = 0; i < 2; i++) {
-            var filled = this.checkFilledRow(X + '-' + Y[i]);
-
-            if(!filled && !keepKilling) {
-                this.initializeMovement(X, Y[i], checker);
+            if(checker.color) {
+                X = parseInt(positions[0]) - 1;
+                Y = [parseInt(positions[1]) - 1, parseInt(positions[1]) + 1];
             } else {
-                if(filled && filled.color != checker.color) {
-                    this.checkIfCanKill(checker, filled);
+                X = parseInt(positions[0]) + 1;
+                Y = [parseInt(positions[1]) + 1, parseInt(positions[1]) - 1];
+            }
+
+            for(var i = 0; i < 2; i++) {
+                var filled = this.checkFilledRow(X + '-' + Y[i]);
+
+                if(!filled && !keepKilling) {
+                    this.initializeMovement(X, Y[i], checker);
+                } else {
+                    if(filled && filled.color != checker.color) {
+                        this.checkIfCanKill(checker, filled);
+                    }
                 }
             }
         }
