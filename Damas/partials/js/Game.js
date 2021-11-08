@@ -104,18 +104,36 @@ class Game  {
         var final_X = '';
         var final_Y = '';
 
-        if(clicked_checker.color) {
-            final_X = (parseInt(victim_positions[0]) - 1);
-        } else {
-            final_X = (parseInt(victim_positions[0]) + 1);
-        }
+        if(clicked_checker.isQueen()){
+            if(parseInt(clicked_positions[1]) < parseInt(victim_positions[1])) {
+                //Can kill right
+                final_Y = (parseInt(victim_positions[1]) + 1);
+            } else if(parseInt(clicked_positions[1]) > parseInt(victim_positions[1])) {
+                //Can kill left
+                final_Y = (parseInt(victim_positions[1]) - 1);
+            }
 
-        if(parseInt(clicked_positions[1]) < parseInt(victim_positions[1])) {
-            //Can kill right
-            final_Y = (parseInt(victim_positions[1]) + 1);
-        } else if(parseInt(clicked_positions[1]) > parseInt(victim_positions[1])) {
-            //Can kill left
-            final_Y = (parseInt(victim_positions[1]) - 1);
+            if(parseInt(clicked_positions[0]) < parseInt(victim_positions[0])) {
+                //Can kill right
+                final_X = (parseInt(victim_positions[0]) + 1);
+            } else if(parseInt(clicked_positions[0]) > parseInt(victim_positions[0])) {
+                //Can kill left
+                final_X = (parseInt(victim_positions[0]) - 1);
+            }
+        } else {
+            if(clicked_checker.color) {
+                final_X = (parseInt(victim_positions[0]) - 1);
+            } else {
+                final_X = (parseInt(victim_positions[0]) + 1);
+            }
+    
+            if(parseInt(clicked_positions[1]) < parseInt(victim_positions[1])) {
+                //Can kill right
+                final_Y = (parseInt(victim_positions[1]) + 1);
+            } else if(parseInt(clicked_positions[1]) > parseInt(victim_positions[1])) {
+                //Can kill left
+                final_Y = (parseInt(victim_positions[1]) - 1);
+            }
         }
 
         if(!this.checkFilledRow(final_X + '-' + final_Y)) {
@@ -196,22 +214,41 @@ class Game  {
             var X = '';
             var Y = '';
 
-            if(checker.color) {
-                X = parseInt(positions[0]) - 1;
+            if(checker.isQueen()) {
+                X = [parseInt(positions[0]) - 1, parseInt(positions[0]) + 1];
                 Y = [parseInt(positions[1]) - 1, parseInt(positions[1]) + 1];
+
+                for(var c = 0; c < 2; c++) {
+                    for(var i = 0; i < 2; i++) {
+                        var filled = this.checkFilledRow(X[c] + '-' + Y[i]);
+        
+                        if(!filled && !keepKilling) {
+                            this.initializeMovement(X[c], Y[i], checker);
+                        } else {
+                            if(filled && filled.color != checker.color) {
+                                this.checkIfCanKill(checker, filled);
+                            }
+                        }
+                    }
+                }
             } else {
-                X = parseInt(positions[0]) + 1;
-                Y = [parseInt(positions[1]) + 1, parseInt(positions[1]) - 1];
-            }
-
-            for(var i = 0; i < 2; i++) {
-                var filled = this.checkFilledRow(X + '-' + Y[i]);
-
-                if(!filled && !keepKilling) {
-                    this.initializeMovement(X, Y[i], checker);
+                if(checker.color) {
+                    X = parseInt(positions[0]) - 1;
+                    Y = [parseInt(positions[1]) - 1, parseInt(positions[1]) + 1];
                 } else {
-                    if(filled && filled.color != checker.color) {
-                        this.checkIfCanKill(checker, filled);
+                    X = parseInt(positions[0]) + 1;
+                    Y = [parseInt(positions[1]) + 1, parseInt(positions[1]) - 1];
+                }
+    
+                for(var i = 0; i < 2; i++) {
+                    var filled = this.checkFilledRow(X + '-' + Y[i]);
+    
+                    if(!filled && !keepKilling) {
+                        this.initializeMovement(X, Y[i], checker);
+                    } else {
+                        if(filled && filled.color != checker.color) {
+                            this.checkIfCanKill(checker, filled);
+                        }
                     }
                 }
             }
