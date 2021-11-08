@@ -114,6 +114,7 @@
         stroke-dashoffset: 0;
     }
 }
+
 /* Fin Letras del CopyRight */
 
 /* MODAL PICKUP USERS */
@@ -132,12 +133,12 @@ h2 {
 }
 
 .colorAlert {
-    
+
     background-color: #119200;
 }
 
 .titleFontFamily {
-    
+
     font-family: 'Permanent Marker', cursive;
     color: white;
 
@@ -175,7 +176,6 @@ h2 {
 
 .negra {
     right: 195px;
-    ;
     position: relative;
     width: 60px;
     height: 45px;
@@ -201,7 +201,6 @@ h2 {
     transform: scale(1.2);
     font-family: 'Permanent Marker', cursive;
     background-color: #dac2dd;
-
     background-image: repeating-linear-gradient(50deg, transparent, transparent 25px, rgba(255, 255, 255, 0.5) 25px, rgba(255, 255, 255, .5) 50px);
     animation: color 50s linear infinite;
     border: 6px solid white;
@@ -243,17 +242,17 @@ h2 {
     display: flex;
     justify-content: center;
 }
-.modal-content{
-    background-color: #1edeec;
+
+.modal-content {
     /* background-image: url(https://playpager.com/wp-content/uploads/2018/12/damas.jpg); */
     background-image: url(/Damas/Damas/game/damas.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    /* background-blend-mode: soft-light; */
     background-blend-mode: darken;
 
 }
+
 .modal-dialog {
     transition: all 3.5s ease-in-out;
     border-radius: 50%;
@@ -264,9 +263,6 @@ h2 {
     transform: scale(1.2);
     max-width: 1300px;
     margin: 1.75rem auto;
-}
-.modal-content img{
-    opacity: 0;
 }
 
 /* GAME */
