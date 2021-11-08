@@ -139,11 +139,14 @@ h2 {
 .titleFontFamily {
     
     font-family: 'Permanent Marker', cursive;
+    color: white;
 
 }
 
 .fontFamily {
     font-family: 'Pacifico', cursive;
+    color: white;
+
 }
 
 .datos {
@@ -242,21 +245,27 @@ h2 {
 }
 .modal-content{
     background-color: #1edeec;
-    /* background-image: url(https://www.affde.com/uploads/article/7591/kqEWq6Jz8dp2Lb03.gif); */
-    /* background-repeat: no-repeat;
+    background-image: url(https://playpager.com/wp-content/uploads/2018/12/damas.jpg);
+    background-repeat: no-repeat;
     background-position: center;
-    background-size: cover; */
+    background-size: cover;
+    /* background-blend-mode: soft-light; */
+    background-blend-mode: darken;
+
 }
 .modal-dialog {
     transition: all 3.5s ease-in-out;
     border-radius: 50%;
     -webkit-border-radius: 50%;
-    /* box-shadow: 0px 0px 15px 15px #7e82839d;
-    -webkit-box-shadow: 0px 0px 15px 15px #28aa1c81; */
+    box-shadow: 0px 0px 15px 15px #ec731e;
+    -webkit-box-shadow: 0px 0px 15px 15px #ec731e;
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
     max-width: 1300px;
     margin: 1.75rem auto;
+}
+.modal-content img{
+    opacity: 0;
 }
 
 /* GAME */
