@@ -105,7 +105,7 @@
             
         </div>
         
-        <div class="d-flex flex-column justify-content-center">
+        <div id="surrender" class="d-flex flex-column justify-content-center">
             <img src="https://c.tenor.com/yyMYe10-EeQAAAAj/moving-man.gif" alt="">
                 <p class="text-end titleFontFamily text-black justify-content-center"> Surrender?</p>
         </div>
@@ -123,6 +123,8 @@
 
 <script>
     $(function () {
+        var game = null;
+        var self = this;
         $("#usersModal").modal('show');
 
         $('#submit_names').on('click', function () {
@@ -134,13 +136,19 @@
             var player2 = $('#player2').val();
 
             if (player1 && player2) {
-                var game = new Game(player1, player2);
-                game.initializeBoard();
+                self.game = new Game(player1, player2);
+                self.game.initializeBoard();
             } else {
                 e.preventDefault();
             }
         })
+
+        $('#surrender').on('click', function() {
+            self.game.endGame(!self.game.checkTurn());
+        });
     });
+
+   
 </script>
 
 </html>
