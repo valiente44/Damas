@@ -144,7 +144,9 @@
         })
 
         $('#surrender').on('click', function() {
-            self.game.endGame(!self.game.checkTurn());
+            if(self.game.isStarted()) {
+                self.game.endGame(!self.game.checkTurn());
+            }
         });
     });
 

@@ -73,9 +73,9 @@ class Game  {
             this.start = false;
             var winner_string = '';
             if(winner) {
-                winner_string = 'The white checkers won!!';
+                winner_string = this.player1 + ' (white checkers) won!!';
             } else {
-                winner_string = 'The black checkers won!!';
+                winner_string = this.player2 + ' (black checkers) won!!';
             }
 
             Swal.fire(
