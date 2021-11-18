@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Damas - Dani / Diego</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        type="text/css">
     <link href="partials/css/app.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -16,18 +18,26 @@
 
 <body>
     <!-- USERS NAME MODAL + START GAME -->
-    
+
     <div id="usersModal" class="modal container-fluid" tabindex="-1" role="dialog">
-        <div class="container"> 
+        <div class="container">
             <svg class="mt-5 mb-5" viewBox="0 0 1418 116" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g stroke="none" fill="none" fill-rule="evenodd" fill-opacity="0">
                     <text id="@Ole er beti" stroke="#fff" fill="#645F5A" font-weight="normal"
                         font-family="PermanentMarker-Regular, Permanent Marker" font-size="144">
                         <tspan x="215" y="109">
-                            <tspan>D</tspan><tspan>I</tspan><tspan>E</tspan><tspan>G</tspan><tspan>O</tspan>
+                            <tspan>D</tspan>
+                            <tspan>I</tspan>
+                            <tspan>E</tspan>
+                            <tspan>G</tspan>
+                            <tspan>O</tspan>
                             <tspan></tspan>
-                            <tspan>D</tspan><tspan>A</tspan><tspan>N</tspan><tspan>I</tspan><tspan>©</tspan>
+                            <tspan>D</tspan>
+                            <tspan>A</tspan>
+                            <tspan>N</tspan>
+                            <tspan>I</tspan>
+                            <tspan>©</tspan>
                         </tspan>
                     </text>
                 </g>
@@ -38,7 +48,7 @@
 
                 <h1 class=".lead mt-5 titleFontFamily ">DAMAS</h1>
 
-               
+
                 <h2 class=".lead text-center mt-5 fontFamily">Coloca los nombres de los jugadores y empieza el juego!
                 </h2>
                 <div class="mt-5">
@@ -47,8 +57,8 @@
                             <div class="blanca spinner-border mt-2"></div>
                         </div>
                         <div class="player1">
-                            <input class="form-control" id="player1" name="player1" type="text" placeholder="Player1 - Blancas"
-                                maxlength="10">
+                            <input class="form-control" id="player1" name="player1" type="text"
+                                placeholder="Player1 - Blancas" maxlength="10">
                         </div>
                         <div class="logo_vs mt-5">
                             <h2 class="titleFontFamily h3">Click en la imagen para jugar</h2>
@@ -59,8 +69,8 @@
                         </div>
 
                         <div class="player2">
-                            <input class="form-control" id="player2" name="player2" type="text" placeholder="Player2 - Negras"
-                                maxlength="10">
+                            <input class="form-control" id="player2" name="player2" type="text"
+                                placeholder="Player2 - Negras" maxlength="10">
                         </div>
                         <div class="m-5">
                             <div class="negra spinner-border mt-2">
@@ -73,7 +83,7 @@
     </div>
     <!-- END USERS NAME -->
     <div class="mt-5"></div>
-    
+
     <!-- PRINCIPAL BOARD -->
     <div class="score" id="score">
         <div class="table_game" id="table"></div>
@@ -90,7 +100,7 @@
                             <span class="puntuation " id="whitePuntuation"></span>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="col-6">
                 <div class="text-center mt-3">
@@ -102,12 +112,12 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
-        
+
         <div id="surrender" class="d-flex flex-column justify-content-center">
             <img src="https://c.tenor.com/yyMYe10-EeQAAAAj/moving-man.gif" alt="">
-                <p class="text-end titleFontFamily text-black justify-content-center"> Surrender?</p>
+            <p class="text-end titleFontFamily text-black justify-content-center"> Surrender?</p>
         </div>
     </div>
 
@@ -143,16 +153,20 @@
             }
         })
 
-        $('#surrender').on('click', function() {
-            if(self.game.isStarted()) {
+        $('#surrender').on('click', function () {
+            if (self.game.isStarted()) {
                 self.game.endGame(!self.game.checkTurn());
             } else {
                 self.game.reMatch();
             }
         });
     });
+    // var game = new Game("player1", "player2")
+    // var checker = new Checker("piece, color, square = '0-0'")
+    // var killedChecker = new Checker("piece, color, square = '0-0'")
+    // console.log(game.makeMovement(checker, '4-2', killedChecker));
+    // console.log(game.getTurn());
 
-   
 </script>
 
 </html>

@@ -244,8 +244,8 @@ h2 {
 }
 
 .modal-content {
-    /* background-image: url(https://playpager.com/wp-content/uploads/2018/12/damas.jpg); */
-    background-image: url(/Damas/Damas/game/damas.jpg);
+    background-image: url(https://playpager.com/wp-content/uploads/2018/12/damas.jpg);
+    /* background-image: url(/Damas/Damas/game/damas.jpg); */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
