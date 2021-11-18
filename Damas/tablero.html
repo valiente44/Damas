@@ -146,6 +146,8 @@
         $('#surrender').on('click', function() {
             if(self.game.isStarted()) {
                 self.game.endGame(!self.game.checkTurn());
+            } else {
+                self.game.reMatch();
             }
         });
     });

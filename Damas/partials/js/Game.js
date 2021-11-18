@@ -20,6 +20,18 @@ class Game  {
             this.board.initializeBoard();
         }
 
+        restartGame() {
+            this.start = true;
+            this.whitePuntuation = 12;
+            this.blackPuntuation = 12;
+            this.board = new Board(this);
+            this.initializeBoard();
+            this.isMultiKilling = false;
+            this.turn = true;
+
+            this.initializeView();
+        }
+
         initializeView() {
             $('#player1_name').html(this.player1);
             $('#player2_name').html(this.player2);
@@ -78,11 +90,24 @@ class Game  {
                 winner_string = this.player2 + ' (black checkers) won!!';
             }
 
-            Swal.fire(
-                'A winner has been decided!',
-                winner_string,
-                'success'
-            );
+            var self = this;
+
+            Swal.fire({
+                title: 'A winner has been decided!',
+                html: winner_string,
+                icon: 'success',
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText:
+                    '<i class="fa fa-thumbs-up"></i> New game!',
+                cancelButtonText:
+                    '<i class="fa fa-thumbs-down"></i> End game!',}
+            ).then((result) => {
+                if (result.isConfirmed) {
+                    self.reMatch();
+                }
+            });
         }
     // <!-- End Utility functions Game -->
 
@@ -90,6 +115,27 @@ class Game  {
         this.removeAvailablePositions();
     
         this.loadMovements(checker);
+    }
+
+    reMatch() {
+        Swal.fire({
+            title: 'New game!',
+            html: 'Do you want to play with the same players, or change names?',
+            icon: 'info',
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText:
+                '<i class="fa fa-thumbs-up"></i> Same!',
+            cancelButtonText:
+                '<i class="fa fa-thumbs-down"></i> Change!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.restartGame();
+            } else {
+                location.reload();
+            }
+        });
     }
 
     initializeMovement(X, Y, checker, killedChecker = null) {

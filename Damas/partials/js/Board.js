@@ -4,9 +4,11 @@ class Board {
         this.black_cheekers = [];
         this.all_cheekers = [];
         this.game = game;
+        this.removeEventListeners();
     }
 
     initializeBoard() {
+        $('#table').html('');
         var board = '';
         var swap = true;
         for(var fil = 0; fil < 8; fil++) {
@@ -40,6 +42,11 @@ class Board {
         }
     }
 
+    removeEventListeners() {
+        $(document).off('click', '.white_checker');
+        $(document).off('click', '.black_checker');
+    }
+
     rowFilled(position) {
         return this.all_cheekers.find(el => el.position == position)
     }
@@ -47,6 +54,9 @@ class Board {
     initializeCheckers() {
         var arrayWhiteCheckers = [];
         var arrayBlackCheckers = [];
+        this.white_cheekers = [];
+        this.black_cheekers = [];
+        this.all_cheekers = [];
 
         var id = 1;
         var outside = this;
